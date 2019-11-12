@@ -6,7 +6,7 @@ global alphabet_letters
 alphabet = [10111, 111010101, 11101011101, 1110101, 1, 101011101, 111011101, 1010101, 101, 1011101110111, 111010111, 101110101, 1110111, 11101, 11101110111, 10111011101, 1110111010111, 1011101, 10101, 111, 1010111, 101010111, 101110111, 11101010111, 1110101110111, 11101110101]
 alphabet_letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','y','z']
 
-def beeper(inpt, unit=100, frequency=600):
+def beeper(inpt, unit=75, frequency=600):
 	bits = list(filter(None,str(inpt).replace("0","s0s").split("s")))
 	for idx, x in enumerate(bits):
 		print(round(idx/len(bits)*100,2),"%")
