@@ -1,10 +1,36 @@
 from msvcrt import getch
 import winsound
 import time
-global alphabet
-global alphabet_letters
-alphabet = [10111, 111010101, 11101011101, 1110101, 1, 101011101, 111011101, 1010101, 101, 1011101110111, 111010111, 101110101, 1110111, 11101, 11101110111, 10111011101, 1110111010111, 1011101, 10101, 111, 1010111, 101010111, 101110111, 11101010111, 1110101110111, 11101110101]
-alphabet_letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+from collections import OrderedDict
+alphabet_dict = {
+    "a": 10111,
+    "b": 111010101,
+    "c": 11101011101,
+    "d": 1110101,
+    "e": 1,
+    "f": 101011101,
+    "g": 111011101,
+    "h": 1010101,
+    "i": 101,
+    "j": 1011101110111,
+    "k": 111010111,
+    "l": 101110101,
+    "m": 1110111,
+    "n": 11101,
+    "o": 11101110111,
+    "p": 10111011101,
+    "q": 1110111010111,
+    "r": 1011101,
+    "s": 10101,
+    "t": 111,
+    "u": 1010111,
+    "v": 101010111,
+    "w": 101110111,
+    "x": 11101010111,
+    "y": 1110101110111,
+    "z": 11101110101,
+	" ": 0000000
+}
 
 def beeper(inpt, unit=75, frequency=600):
 	bits = list(filter(None,str(inpt).replace("0","s0s").split("s")))
@@ -25,15 +51,12 @@ def beeper(inpt, unit=75, frequency=600):
 	time.sleep(unit/1000*3)
 
 while True:
-	key = ord(getch())
+	key = str(getch(), "ascii")
+	print(key)
 	try:
-		if 96<key<123:
-			key = key-97
-			print(alphabet_letters[key])
-			beeper(alphabet[key])
-		elif key == 32:
-			print("space")
-			beeper("0000000")
+		if key in alphabet_dict.keys():
+			print(key)
+			beeper(alphabet_dict[key])
 		else:
 			print("not in range")
 	except Exception as e:
