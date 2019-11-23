@@ -51,7 +51,7 @@ def beeper(inpt, unit=75, frequency=600):
 	time.sleep(unit/1000*3)
 
 while True:
-	key = str(getch(), "ascii")
+	key = str(getch(), "ascii").lower()
 	try:
 		if key in alphabet_dict.keys():
 			print(key)
